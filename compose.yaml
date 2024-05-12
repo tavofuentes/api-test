@@ -6,3 +6,15 @@ services:
       - 3000:3000
     environment:
       - DEBUG=express:*
+      - ENVIRONMENT=STAGING
+  dev-server:
+    command: node --watch src/server.js
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - "./src:/usr/src/app/src"
+    environment:
+      - DEBUG=express:*
+      - ENVIRONMENT=DEVELOPMENT
