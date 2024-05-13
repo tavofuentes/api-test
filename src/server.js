@@ -41,6 +41,16 @@ app.get("/more", async (req, res) => {
   res.send("More success! 🌮🌮🌮🥤🍦");
 });
 
+app.get("/dummyhttpresponse/:httpCode", async (req, res) => {
+  const httpCode = parseInt(req.params.httpCode);
+  res.status(httpCode);
+
+  if (httpCode >= 200 && httpCode < 300 && ![204, 205].includes(httpCode)) {
+    res.send({ foo: "bar" });
+  }
+  res.send();
+});
+
 app.get("/somepath/:tacoCount", async (req, res) => {
   const tacoCount = parseInt(req.params.tacoCount) || null;
 
