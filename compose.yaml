@@ -18,3 +18,9 @@ services:
     environment:
       - DEBUG=express:*
       - ENVIRONMENT=DEVELOPMENT
+      - TOKEN_SECRET=super_secret_string123
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
